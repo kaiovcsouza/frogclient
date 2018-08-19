@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-// import Toolbar from './components/Toolbar/Toolbar';
+import Toolbar from './components/Toolbar/Toolbar';
 import Signin from './components/Signin/Signin';
+import SideDrawer from './components/SideDrawer/SideDrawer';
+import Backdrop from './components/Backdrop/Backdrop';
 
-import './App.css';
 
 
 const initialState = {
   route: 'signin',
   isProfileOpen: false,
   isSignedIn: false,
+  sideopen: false,
   user: {
     id: '',
     name: '',
@@ -71,13 +73,34 @@ class App extends Component {
     }));
   }
 
+  handleDrawerClick = () => {
+    this.setState((prevState) => {
+      return { sideopen: !prevState.sideopen };
+    })
+  }
+
+  handleBackdropClick = () => {
+    this.setState({ sideopen: false })
+  }
+
   render() {
     const { isSignedIn, route, isProfileOpen, user } = this.state;
+    let backDrop;
+
+    if (this.state.sideopen) {
+      backDrop = <Backdrop click={this.handleBackdropClick}/>;
+    }
+
     return (
-      <div className="App">
+      <div style={{ height: '100%' }}>
         {route === 'home'
           ? <div>
-            OI
+            <Toolbar handleDrawerClick={this.handleDrawerClick} />
+            <SideDrawer show={this.state.sideopen}/>
+            {backDrop}
+            <main style={{ marginTop: '64px' }}>
+              oi
+            </main>
           </div>
           :
           <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
