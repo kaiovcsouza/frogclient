@@ -3,8 +3,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: lightblue;
-    height: 56px;
+    background: steelblue;
+    height: 48px;
 }
 .tool_nav {
     display: flex;
@@ -28,16 +28,9 @@
     font-size: 1.5rem;
 }
 
-.tool_item ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
 
-.tool_item li {
-    padding: 0 0.5rem;
-}
+
+
 
 .tool_item a {
     color: white;

@@ -98,8 +98,8 @@ class App extends Component {
             <Toolbar handleDrawerClick={this.handleDrawerClick} />
             <SideDrawer show={this.state.sideopen}/>
             {backDrop}
-            <main style={{ marginTop: '64px' }}>
-              oi
+            <main style={{marginTop: '5rem', marginLeft: '2rem',position:'fixed' }}>
+              Aqui ficará as telas do sistema
             </main>
           </div>
           :
