@@ -3,7 +3,7 @@ import Toolbar from './components/Toolbar/Toolbar';
 import Signin from './components/Signin/Signin';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import Backdrop from './components/Backdrop/Backdrop';
-
+import {Switch, Route,} from 'react-router-dom'
 
 
 const initialState = {
@@ -88,7 +88,7 @@ class App extends Component {
     let backDrop;
 
     if (this.state.sideopen) {
-      backDrop = <Backdrop click={this.handleBackdropClick}/>;
+      backDrop = <Backdrop click={this.handleBackdropClick} />;
     }
 
     return (
@@ -96,10 +96,12 @@ class App extends Component {
         {route === 'home'
           ? <div>
             <Toolbar handleDrawerClick={this.handleDrawerClick} />
-            <SideDrawer show={this.state.sideopen}/>
+            <SideDrawer show={this.state.sideopen} />
             {backDrop}
-            <main style={{marginTop: '5rem', marginLeft: '2rem',position:'fixed' }}>
-              Aqui ficará as telas do sistema
+            <main style={{ marginTop: '5rem', marginLeft: '2rem', position: 'fixed' }}>
+              <Switch>
+                {/* <Route path="/page1" component={} /> */}
+              </Switch>
             </main>
           </div>
           :
@@ -109,5 +111,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;

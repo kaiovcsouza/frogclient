@@ -82,7 +82,7 @@ class Signin extends React.Component {
                         </div>
                     </main>
                 </article>
-                <p class="w-90 ba br2 pa3 ma2 red bg-washed-red center" role="alert">
+                <p className="w-90 ba br2 pa3 ma2 red bg-washed-red center" role="alert">
                     <strong>Oh snap!</strong> Change a few things up and try submitting again.
                 </p>
             </div>
