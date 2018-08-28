@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './DrawerToggleButton.css';
 
 const DrawerToggleButton = (props) => {
@@ -11,5 +10,4 @@ const DrawerToggleButton = (props) => {
         </button>
     );
 }
-
 export default DrawerToggleButton;

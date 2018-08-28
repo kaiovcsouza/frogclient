@@ -3,8 +3,7 @@ import Toolbar from './components/Toolbar/Toolbar';
 import Signin from './components/Signin/Signin';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import Backdrop from './components/Backdrop/Backdrop';
-import {Switch, Route,} from 'react-router-dom'
-
+import {Switch, Route} from 'react-router-dom';
 
 const initialState = {
   route: 'signin',
@@ -96,7 +95,7 @@ class App extends Component {
         {route === 'home'
           ? <div>
             <Toolbar handleDrawerClick={this.handleDrawerClick} />
-            <SideDrawer show={this.state.sideopen} />
+            <SideDrawer show={this.state.sideopen} close={this.handleBackdropClick}/>
             {backDrop}
             <main style={{ marginTop: '5rem', marginLeft: '2rem', position: 'fixed' }}>
               <Switch>
