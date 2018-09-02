@@ -3,18 +3,16 @@ import Toolbar from './components/Toolbar/Toolbar';
 import Signin from './components/Signin/Signin';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import Backdrop from './components/Backdrop/Backdrop';
-import {Switch, Route} from 'react-router-dom';
-
+import { Switch, Route } from 'react-router-dom'
 const initialState = {
-  route: 'signin',
+  route: 'home',
   isProfileOpen: false,
   isSignedIn: false,
   sideopen: false,
   user: {
     id: '',
     name: '',
-    email: '',
-    joined: '',
+    email: ''
   }
 }
 
@@ -27,10 +25,9 @@ class App extends Component {
   loadUser = (data) => {
     this.setState({
       user: {
-        id: data.id,
-        name: data.name,
-        email: data.email,
-        joined: data.joined
+        id: data.usercod,
+        name: data.usernom,
+        email: data.useremail
       }
     })
   }
@@ -95,11 +92,11 @@ class App extends Component {
         {route === 'home'
           ? <div>
             <Toolbar handleDrawerClick={this.handleDrawerClick} />
-            <SideDrawer show={this.state.sideopen} close={this.handleBackdropClick}/>
+            <SideDrawer show={this.state.sideopen} close={this.handleBackdropClick} />
             {backDrop}
             <main style={{ marginTop: '5rem', marginLeft: '2rem', position: 'fixed' }}>
               <Switch>
-                {/* <Route path="/page1" component={} /> */}
+                <Route exact path="/" component={''}/>
               </Switch>
             </main>
           </div>
