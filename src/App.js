@@ -4,9 +4,11 @@ import Signin from './components/Signin/Signin';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import CadFazendas from './components/Cadastros/Fazendas/CadFazendas';
 import Backdrop from './components/Backdrop/Backdrop';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom';
+import './App.css';
+
 const initialState = {
-  route: 'signin',
+  route: 'home',
   isProfileOpen: false,
   isSignedIn: false,
   sideopen: false,
@@ -81,7 +83,7 @@ class App extends Component {
   }
 
   render() {
-    const { isSignedIn, route, isProfileOpen, user } = this.state;
+    const { route } = this.state;
     let backDrop;
 
     if (this.state.sideopen) {
@@ -95,7 +97,7 @@ class App extends Component {
             <Toolbar handleDrawerClick={this.handleDrawerClick} />
             <SideDrawer show={this.state.sideopen} close={this.handleBackdropClick} />
             {backDrop}
-            <main style={{ marginTop: '4rem', marginLeft: '2.7rem', position: 'fixed'}}>
+            <main style={{marginTop:'4rem', marginLeft: '1rem', position: 'absolute'}}>
               <Switch>
                 <Route exact path="/" component={CadFazendas}/>
               </Switch>

@@ -5,6 +5,7 @@
     width: 100%;
     background: steelblue;
     height: 48px;
+    z-index: 100;
 }
 .tool_nav {
     display: flex;
@@ -27,10 +28,6 @@
     text-decoration: none;
     font-size: 1.5rem;
 }
-
-
-
-
 
 .tool_item a {
     color: white;
