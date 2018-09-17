@@ -97,7 +97,7 @@ class App extends Component {
             <Toolbar handleDrawerClick={this.handleDrawerClick} />
             <SideDrawer show={this.state.sideopen} close={this.handleBackdropClick} />
             {backDrop}
-            <main style={{marginTop:'4rem', marginLeft: '1rem', position: 'absolute'}}>
+            <main style={{marginTop:'4rem', position: 'absolute', width: '100%'}}>
               <Switch>
                 <Route exact path="/" component={CadFazendas}/>
               </Switch>

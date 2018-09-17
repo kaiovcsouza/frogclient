@@ -1,104 +1,48 @@
 import React, { Component } from 'react';
-
+import Inputs from '../../Utilities/Inputs/Inputs';
 import './CadFazendas.css'
 
 class CadFazendas extends Component {
     render() {
         return (
-            <fieldset style={{ border: 'none' }}>
-                <legend style={{ fontSize: '1.5rem', fontWeight: 'bolder' }}>Fazenda</legend>
-                <div style={{ display: 'inline-block' }}>
-                    <div class="group">
-                        <input type="text" required />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Fazenda</label>
-                    </div>
+            <fieldset style={{ border: '1px solid black' }}>
+                <legend style={{ fontSize: '1.5rem', fontWeight: 'bolder' }}>Fazendas</legend>
+                <div className='input_container'>
+                    <Inputs type='text' label='Fazenda' />
                 </div>
-                <div style={{ display: 'inline-block', marginLeft: '5rem' }}>
-                    <div class="group">
-                        <input type="text" required />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>CNPJ</label>
-                    </div>
+                <div className='input_container third' style={{marginRight: '5rem'}}>
+                    <Inputs type='text' label='CNPJ' />
                 </div>
-
-                <div style={{ display: 'inline-block' }}>
-                    <div class="group">
-                        <input type="text" required />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Inscrição Estadual</label>
-                    </div>
+                <div className='input_container third' style={{marginRight: '5rem'}}>
+                    <Inputs type='text' label='Inscrição Estadual' />
                 </div>
-                <div style={{ display: 'inline-block', marginLeft: '5rem' }}>
-                    <div class="group">
-                        <input type="number" required />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Área Total (ha)</label>
-                    </div>
+                <div className='input_container third'>
+                    <a href='/' >Area total Ha</a>
                 </div>
-                <div style={{ display: 'inline-block' }}>
-                    <div class="group">
-                        <input type="text" required />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Endereço</label>
-                    </div>
+                <div className='input_container'>
+                    <Inputs type='text' label='Endereço' />
                 </div>
-                <div style={{ display: 'inline-block', marginLeft: '5rem' }}>
-                    <div class="group">
-                        <input type="text" required />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Bairro</label>
-                    </div>
+                <div className='input_container'>
+                    <Inputs type='text' label='Bairro' />
                 </div>
-                <div style={{ display: 'inline-block' }}>
-                    <div class="group">
-                        <input type="text" required />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Complemento</label>
-                    </div>
+                <div className='input_container'>
+                    <Inputs type='text' label='Complemento' />
                 </div>
-                <div style={{ display: 'inline-block', marginLeft: '5rem' }}>
-                    <div class="group">
-                        <input type="text" required />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>CEP/CX Postal</label>
-                    </div>
+                <div className='input_container'>
+                    <Inputs type='text' label='CEP / CX Postal' />
                 </div>
-                <div style={{ display: 'inline-block' }}>
-                    <div class="group">
-                        <input type="text" required />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Coordenadas</label>
-                    </div>
+                <div className='input_container'>
+                    <Inputs type='text' label='Coordenadas' />
                 </div>
-                <div style={{ display: 'inline-block', marginLeft: '5rem' }}>
-                    <div class="group">
-                        <input type="text" required />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Telefone</label>
-                    </div>
+                <div className='input_container'>
+                    <Inputs type='text' label='Telefone' />
                 </div>
-                <div style={{ display: 'inline-block' }}>
-                    <div class="group">
-                        <input type="text" required />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Proprietário</label>
-                    </div>
+                <div className='input_container'>
+                    <Inputs type='text' label='Proprietário' />
                 </div>
-                <div style={{ display: 'block', marginTop: '2rem', textAlign: "center"}}>
-                    <button style={{width: '150px', background: '#008CBA', textDecoration: 'none', borderRadius: '10px', border: 'none', padding: '0.5rem'}}>
-                    Cadastrar
+                <div style={{ display: 'block', marginTop: '2rem', textAlign: "center" }}>
+                    <button style={{ width: '150px', background: '#008CBA', textDecoration: 'none', borderRadius: '10px', border: 'none', padding: '0.5rem' }}>
+                        Cadastrar
                     </button>
                 </div>
             </fieldset>
