@@ -3,10 +3,10 @@ import './Inputs.css';
 
 const Inputs = (props) => {
     return (
-        <div class="group">
+        <div className="group">
             <input type={props.type} required />
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <span className="highlight"></span>
+            <span className="bar"></span>
             <label>{props.label}</label>
         </div>
     );
