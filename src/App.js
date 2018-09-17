@@ -4,12 +4,13 @@ import Signin from './components/Signin/Signin';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import CadFazendas from './components/Cadastros/Fazendas/CadFazendas';
 import Backdrop from './components/Backdrop/Backdrop';
+import Modal from './components/Modal/Modal';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
 const initialState = {
   route: 'home',
-  isProfileOpen: false,
+  isModalOpen: false,
   isSignedIn: false,
   sideopen: false,
   user: {
@@ -68,7 +69,7 @@ class App extends Component {
   toggleModal = () => {
     this.setState(state => ({
       ...state,
-      isProfileOpen: !state.isProfileOpen,
+      isModalOpen: !state.isModalOpen,
     }));
   }
 
@@ -83,7 +84,7 @@ class App extends Component {
   }
 
   render() {
-    const { route } = this.state;
+    const { route, isModalOpen } = this.state;
     let backDrop;
 
     if (this.state.sideopen) {
@@ -92,14 +93,17 @@ class App extends Component {
 
     return (
       <div style={{ height: '100%' }}>
+        {isModalOpen && <Modal>
+         {/*Colocar aqui o componente que abrirá em modal */}
+        </Modal>}
         {route === 'home'
           ? <div>
             <Toolbar handleDrawerClick={this.handleDrawerClick} />
             <SideDrawer show={this.state.sideopen} close={this.handleBackdropClick} />
             {backDrop}
-            <main style={{marginTop:'4rem', position: 'absolute', width: '100%'}}>
+            <main style={{ marginTop: '4rem', position: 'absolute', width: '100%' }}>
               <Switch>
-                <Route exact path="/" component={CadFazendas}/>
+                <Route exact path="/" component={(props) => <CadFazendas toggleModal={this.toggleModal}/>} />
               </Switch>
             </main>
           </div>

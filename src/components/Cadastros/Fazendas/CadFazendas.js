@@ -17,7 +17,7 @@ class CadFazendas extends Component {
                     <Inputs type='text' label='Inscrição Estadual' />
                 </div>
                 <div className='input_container third'>
-                    <a href='/' >Area total Ha</a>
+                    <button onClick={this.props.toggleModal}>Area total Ha</button>
                 </div>
                 <div className='input_container'>
                     <Inputs type='text' label='Endereço' />
