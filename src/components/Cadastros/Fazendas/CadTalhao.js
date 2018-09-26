@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Inputs from '../../Utilities/Inputs/Inputs';
+
 
 class CadTalhao extends Component {
     constructor(props) {
@@ -12,10 +12,12 @@ class CadTalhao extends Component {
     onAddBtnClick(event) {
         const inputList = this.state.inputList;
         this.setState({
-            inputList: inputList.concat(<Inputs key={inputList.length} label={inputList.length} />)
-        });
+            inputList: inputList.concat(
+            <div className="group"><input key={this.state.inputList} type="text" required /><span className="highlight"></span>
+            <span className="bar"></span><label>{"Talhão "+this.state.inputList.length}</label></div>
+            )
+            });
     }
-
     onRemoveBtnClick(event) {
         const inputList = this.state.inputList;
         this.setState({

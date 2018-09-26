@@ -75,7 +75,7 @@ class App extends Component {
   }
 
   render() {
-    const { route} = this.state;
+    const { route } = this.state;
     let backDrop;
     if (this.state.sideopen) {
       backDrop = <Backdrop click={this.handleBackdropClick} />;
@@ -87,9 +87,9 @@ class App extends Component {
             <Toolbar handleDrawerClick={this.handleDrawerClick} />
             <SideDrawer show={this.state.sideopen} close={this.handleBackdropClick} />
             {backDrop}
-            <main style={{ marginTop: '4rem', position: 'absolute', width: '100%' }}>
+            <main className="main_content">
               <Switch>
-                <Route exact path="/" component={(props) => <CadFazendas />} />
+                <Route exact path="/" component={CadFazendas} />
               </Switch>
             </main>
           </div>
