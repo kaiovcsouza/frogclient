@@ -18,6 +18,7 @@ class CadTalhao extends Component {
             )
             });
     }
+    
     onRemoveBtnClick(event) {
         const inputList = this.state.inputList;
         this.setState({

@@ -12,8 +12,8 @@ const Toolbar = (props) => {
                 </div>
                 <div className="spacer"></div>
                 <div className="tool_item">
-                    <div className="ul">
-                        <div className="li">
+                    <div>
+                        <div>
                             <img
                                 src="http://tachyons.io/img/logo.jpg"
                                 className="br-100 ba"
