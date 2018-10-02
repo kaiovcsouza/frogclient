@@ -43,8 +43,8 @@ class CadFazendas extends Component {
                         <CadTalhao toggleModal={this.toggleModal} />
                     </Modal>
                 }
-                <fieldset style={{ border: '1px solid black' }}>
-                    <legend style={{ fontSize: '1.5rem', fontWeight: 'bolder' }}>Fazendas</legend>
+                <fieldset className="formcadfaz">
+                    <legend className="formcadfaz__title">Fazendas</legend>
                     <div className='input_container'>
                         <div className="group">
                             <input type="text" required />
@@ -53,7 +53,7 @@ class CadFazendas extends Component {
                             <label>Fazenda</label>
                         </div>
                     </div>
-                    <div className='input_container third' style={{ marginRight: '5rem' }}>
+                    <div className='input_container half' style={{marginRight: '2%'}}>
                         <div className="group">
                             <input type="text" required />
                             <span className="highlight"></span>
@@ -61,7 +61,7 @@ class CadFazendas extends Component {
                             <label>CNPJ</label>
                         </div>
                     </div>
-                    <div className='input_container third' style={{ marginRight: '5rem' }}>
+                    <div className='input_container half'>
                         <div className="group">
                             <input type="text" required />
                             <span className="highlight"></span>
@@ -69,10 +69,10 @@ class CadFazendas extends Component {
                             <label>Inscrição Estadual</label>
                         </div>
                     </div>
-                    <div className='input_container third'>
-                        <button onClick={this.toggleModal}>Área total (ha)</button>
+                    <div className='input_container areabtn'>
+                        <button className="btnmodal" onClick={this.toggleModal}> Definir área total (ha)</button>
                     </div>
-                    <div className='input_container'>
+                    <div className='input_container half' style={{marginRight: '2%'}}>
                         <div className="group">
                             <input type="text" required />
                             <span className="highlight"></span>
@@ -80,15 +80,15 @@ class CadFazendas extends Component {
                             <label>Endereço</label>
                         </div>
                     </div>
-                    <div className='input_container'>
+                    <div className='input_container half'>
                         <div className="group">
                             <input type="text" required />
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Inscrição Bairro</label>
+                            <label>Bairro</label>
                         </div>
                     </div>
-                    <div className='input_container'>
+                    <div className='input_container third' style={{marginRight: '1%'}}>
                         <div className="group">
                             <input type="text" required />
                             <span className="highlight"></span>
@@ -96,7 +96,7 @@ class CadFazendas extends Component {
                             <label>Complemento</label>
                         </div>
                     </div>
-                    <div className='input_container'>
+                    <div className='input_container third' style={{marginRight: '1%'}}>
                         <div className="group">
                             <input type="text" required />
                             <span className="highlight"></span>
@@ -104,7 +104,7 @@ class CadFazendas extends Component {
                             <label>CEP / CX Postal</label>
                         </div>
                     </div>
-                    <div className='input_container'>
+                    <div className='input_container third'>
                         <div className="group">
                             <input type="text" required />
                             <span className="highlight"></span>
@@ -112,7 +112,7 @@ class CadFazendas extends Component {
                             <label>Coordenadas</label>
                         </div>
                     </div>
-                    <div className='input_container'>
+                    <div className='input_container half' style={{marginRight: '2%'}}>
                     <div className="group">
                             <input type="text" required />
                             <span className="highlight"></span>
@@ -120,7 +120,7 @@ class CadFazendas extends Component {
                             <label>Telefone</label>
                         </div>
                     </div>
-                    <div className='input_container'>
+                    <div className='input_container half'>
                     <div className="group">
                             <input type="text" required />
                             <span className="highlight"></span>
@@ -129,7 +129,7 @@ class CadFazendas extends Component {
                         </div>
                     </div>
                     <div style={{ display: 'block', marginTop: '2rem', textAlign: "center" }}>
-                        <button style={{ width: '150px', background: '#008CBA', textDecoration: 'none', borderRadius: '10px', border: 'none', padding: '0.5rem' }}>
+                        <button className="btncad">
                             Cadastrar
                     </button>
                     </div>

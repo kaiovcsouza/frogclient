@@ -1,15 +1,71 @@
 .input_container {
     width: 100%;
+}
+.input_container.areabtn {
+    margin-top: 4rem;
+}
+.formcadfaz {
+    border: none;
+}
+.formcadfaz__title {
+    font-size: 36px; 
+    font-weight: bolder;
+}
+.btncad {
+    width: 200px;
+    color: white;
+    background: dodgerblue;
+    text-decoration: none;
+    border-radius: 15px;
+    border: none;
+    padding: 0.5rem;
+}
+.btnmodal {
+    width: 360px;   
+    background: transparent;
+    border: 1px solid dodgerblue;
+    border-radius: 10px;
+    padding: 0.5rem;
+    cursor: pointer; 
+}
+.btnmodal:hover{
+    background: dodgerblue;
+    color: white;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
+}
+.btnmodal:active {
+    transform: translateY(2px);
+    background: dodgerblue;
+    color: white;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
+}
+.input_container.third {
+    width: 32.65%;
     display: inline-block;
 }
 
-.input_container.third {
-    width: 30%
+.input_container.half {
+    width: 49%;
+    display: inline-block;
 }
 
 @media (max-width: 768px) {
     .input_container.third {
         width: 100%;
-        margin-left: 0
+        margin-left: 0;
+        display: block;
+    }
+    .input_container.half {
+        width: 100%;
+        margin-left: 0;
+        display: block;
+    }
+    
+    .formcadfaz__title {
+        font-size: 24px; 
+        font-weight: bolder;
+    }
+    .btnmodal {
+        width: 100%;
     }
 }
