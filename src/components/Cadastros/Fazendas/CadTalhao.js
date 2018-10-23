@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './CadTalhao.css';
 
 class CadTalhao extends Component {
     constructor(props) {
@@ -13,12 +13,12 @@ class CadTalhao extends Component {
         const inputList = this.state.inputList;
         this.setState({
             inputList: inputList.concat(
-            <div className="group"><input key={this.state.inputList} type="text" required /><span className="highlight"></span>
-            <span className="bar"></span><label>{"Talhão "+this.state.inputList.length}</label></div>
+                <div className="group"><input key={this.state.inputList} type="text" required /><span className="highlight"></span>
+                    <span className="bar"></span><label>{"Talhão " + this.state.inputList.length}</label></div>
             )
-            });
+        });
     }
-    
+
     onRemoveBtnClick(event) {
         const inputList = this.state.inputList;
         this.setState({
@@ -32,9 +32,11 @@ class CadTalhao extends Component {
                 <div style={{ background: 'white', borderRadius: '10px', width: '60%', display: 'absolute', margin: 'auto' }}>
                     <fieldset style={{ border: 'none', marginTop: '4rem' }}>
                         <legend style={{ fontSize: '1.5rem', fontWeight: 'bolder' }}>Área total da fazenda</legend>
+                        <div style={{ textAlign: 'center' }}>
+                            <button className="btn" style={{ marginRight: '1%' }} onClick={this.onAddBtnClick}>+</button>
+                            <button className="btn" onClick={this.onRemoveBtnClick}>-</button>
+                        </div>
                         {this.state.inputList}
-                        <button style={{ width:'40px', padding: '0.5rem', background: '#008CBA', textDecoration: 'none', border: 'none' }} onClick={this.onAddBtnClick}>+</button>
-                        <button style={{ width:'50px', padding: '0.5rem', background: '#008CBA', textDecoration: 'none', border: 'none' }} onClick={this.onRemoveBtnClick}>-  </button>
                     </fieldset>
                 </div>
             </div>

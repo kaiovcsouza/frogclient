@@ -1,0 +1,10 @@
+.btn {
+    width: 40px;
+    text-align: center;
+    color: white;
+    background: dodgerblue;
+    text-decoration: none;
+    border-radius: 15px;
+    border: none;
+    padding: 0.3rem;
+}
