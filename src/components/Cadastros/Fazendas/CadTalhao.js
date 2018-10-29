@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 // Import React Table
 import ReactTable from "react-table";
@@ -38,7 +39,8 @@ class CadTalhao extends Component {
             accessor: 'area',
         }]
         return (
-            <div style={{background: 'rgba(0,0,0,0.3)', position: "absolute", width: '100%', height: '1200px'}}>
+
+            <div style={{ background: 'rgba(0,0,0,0.3)', position: "absolute", width: '100%', height: '1200px' }}>
                 <div style={{ background: 'white', borderRadius: '5px', border: 'solid 1px black', width: '90%', display: 'absolute', margin: 'auto', marginTop: '4rem', zIndex: "200" }}>
                     <h2>Talhões</h2>
                     <div className='input_container half' style={{ marginRight: '1%', marginLeft: '0.5%' }}>
