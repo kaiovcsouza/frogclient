@@ -39,7 +39,6 @@ class CadTalhao extends Component {
             accessor: 'area',
         }]
         return (
-
             <div style={{ background: 'rgba(0,0,0,0.3)', position: "absolute", width: '100%', height: '1200px' }}>
                 <div style={{ background: 'white', borderRadius: '5px', border: 'solid 1px black', width: '90%', display: 'absolute', margin: 'auto', marginTop: '4rem', zIndex: "200" }}>
                     <h2>Talhões</h2>
@@ -62,7 +61,8 @@ class CadTalhao extends Component {
                     <button className="btncad" onClick={this.onAddBtnClick}>Add</button>
                     <div>
                         <ReactTable data={data} columns={columns}
-                            defaultPageSize={10}
+                            style={{height: '600px'}}
+                            defaultPageSize={20}
                             className="-striped -highlight"
                         />
                     </div>
