@@ -1,8 +1,8 @@
 
 import React, { Component } from "react";
-// Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+import './CadTalhao.css';
 
 class CadTalhao extends Component {
     constructor() {
@@ -10,7 +10,9 @@ class CadTalhao extends Component {
         this.state = {
             data: [],
             nomeTalhao: '',
-            areaTalhao: ''
+            areaTalhao: '',
+            variedadeTalhao: '',
+            dtpTalhao: ''
         };
         this.onAddBtnClick = this.onAddBtnClick.bind(this);
     }
@@ -22,47 +24,89 @@ class CadTalhao extends Component {
         if (event.target.name === "areatalhao") {
             this.setState({ areaTalhao: event.target.value });
         }
+        if (event.target.name === "varitalhao") {
+            this.setState({ variedadeTalhao: event.target.value });
+        }
+        if (event.target.name === "dttalhao") {
+            this.setState({ dtpTalhao: event.target.value });
+        }
     }
 
     onAddBtnClick(event) {
-        let obj = [{ talhao: this.state.nomeTalhao, area: this.state.areaTalhao }]
+        let obj = [
+            {
+                talhao: this.state.nomeTalhao,
+                area: this.state.areaTalhao,
+                variedade: this.state.variedadeTalhao,
+                dtplantio: this.state.dtpTalhao
+            }
+        ]
         this.setState({ data: [...this.state.data, ...obj] })
     }
 
     render() {
         const { data } = this.state;
-        const columns = [{
-            Header: 'Talhão',
-            accessor: 'talhao'
-        }, {
-            Header: 'Área Cultivada(M²)',
-            accessor: 'area',
-        }]
+        const columns = [
+            {
+                Header: 'Talhão',
+                accessor: 'talhao'
+            },
+            {
+                Header: 'Variedade',
+                accessor: 'variedade'
+            },
+            {
+                Header: 'Área Cultivada(M²)',
+                accessor: 'area',
+            },
+            {
+                Header: 'Data Plantio',
+                accessor: 'dtplantio'
+            }
+        ]
         return (
-            <div style={{ background: 'rgba(0,0,0,0.3)', position: "absolute", width: '100%', height: '1200px' }}>
-                <div style={{ background: 'white', borderRadius: '5px', border: 'solid 1px black', width: '90%', display: 'absolute', margin: 'auto', marginTop: '4rem', zIndex: "200" }}>
+            <div >
+                <div style={{ background: 'white', borderRadius: '5px', border: 'solid 1px black', width: '90%', margin: 'auto', marginTop: '4rem' }}>
                     <h2>Talhões</h2>
                     <div className='input_container half' style={{ marginRight: '1%', marginLeft: '0.5%' }}>
                         <div className="group">
-                            <input type="text" name="nometalhao" value={this.state.firstName} onChange={this.handleChange} required />
+                            <input type="text" name="nometalhao" onChange={this.handleChange} required />
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Talhão</label>
+                            <label>Nome do talhão</label>
                         </div>
                     </div>
                     <div className='input_container half'>
                         <div className="group">
-                            <input type="text" name="areatalhao" value={this.state.lastName} onChange={this.handleChange} required />
+                            <input type="text" name="varitalhao" onChange={this.handleChange} required />
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Área cultivada</label>
+                            <label>Variedade</label>
                         </div>
                     </div>
-                    <button className="btncad" onClick={this.onAddBtnClick}>Add</button>
+                    <div className='input_container half' style={{ marginRight: '1%', marginLeft: '0.5%' }}>
+                        <div className="group">
+                            <input type="number" name="areatalhao" onChange={this.handleChange} required />
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Área cultivada (M²)</label>
+                        </div>
+                    </div>
+                    <div className='input_container half'>
+                        <div className="group">
+                            <input id="idt" type="text" name="dttalhao" onChange={this.handleChange} required />
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Data do plantio</label>
+                        </div>
+                    </div>
+                    <div style={{margin: '1rem', textAlign: 'center'}}>
+                        <button className="btncad" onClick={this.onAddBtnClick}>Add</button>
+                    </div>
                     <div>
                         <ReactTable data={data} columns={columns}
-                            style={{height: '600px'}}
-                            defaultPageSize={20}
+                            style={{ height: '300px' }}
+                            defaultPageSize={10}
                             className="-striped -highlight"
                         />
                     </div>
