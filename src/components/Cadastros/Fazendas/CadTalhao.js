@@ -28,11 +28,13 @@ class CadTalhao extends Component {
             this.setState({ variedadeTalhao: event.target.value });
         }
         if (event.target.name === "dttalhao") {
+            console.log(event.target.value);
             this.setState({ dtpTalhao: event.target.value });
         }
     }
 
     onAddBtnClick(event) {
+        event.preventDefault();
         let obj = [
             {
                 talhao: this.state.nomeTalhao,
@@ -65,52 +67,55 @@ class CadTalhao extends Component {
             }
         ]
         return (
-            <div >
-                <div style={{ background: 'white', borderRadius: '5px', border: 'solid 1px black', width: '90%', margin: 'auto', marginTop: '4rem' }}>
-                    <h2>Talhões</h2>
-                    <div className='input_container half' style={{ marginRight: '1%', marginLeft: '0.5%' }}>
-                        <div className="group">
-                            <input type="text" name="nometalhao" onChange={this.handleChange} required />
-                            <span className="highlight"></span>
-                            <span className="bar"></span>
-                            <label>Nome do talhão</label>
+            <div className="talhaomodal">
+                <article style={{ background: 'white', borderRadius: '5px', width: '95%'}}>
+                        <div style={{ display: 'inline-block', width: '96%', marginLeft: '1%' }}><h2>Talhões</h2></div>
+                        <div className='modal-close' onClick={this.props.toggleModal}>&times;</div>
+                        <form onSubmit={this.onAddBtnClick}>
+                            <div className='input_container half' style={{ marginRight: '1%' }}>
+                                <div className="group">
+                                    <input type="text" name="nometalhao" onChange={this.handleChange} required />
+                                    <span className="highlight"></span>
+                                    <span className="bar"></span>
+                                    <label>Nome do talhão</label>
+                                </div>
+                            </div>
+                            <div className='input_container half'>
+                                <div className="group">
+                                    <input type="text" name="varitalhao" onChange={this.handleChange} required />
+                                    <span className="highlight"></span>
+                                    <span className="bar"></span>
+                                    <label>Variedade</label>
+                                </div>
+                            </div>
+                            <div className='input_container half' style={{ marginRight: '1%' }}>
+                                <div className="group">
+                                    <input type="number" name="areatalhao" onChange={this.handleChange} required />
+                                    <span className="highlight"></span>
+                                    <span className="bar"></span>
+                                    <label>Área cultivada (M²)</label>
+                                </div>
+                            </div>
+                            <div className='input_container half'>
+                                <div className="group">
+                                    <input id="idt" type="date" name="dttalhao" onChange={this.handleChange} required />
+                                    <span className="highlight"></span>
+                                    <span className="bar"></span>
+                                    <label className='lbldata'>Data do plantio</label>
+                                </div>
+                            </div>
+                            <div style={{ margin: '1rem', textAlign: 'center' }}>
+                                <input className="btnadd" type="submit" value="Add" />
+                            </div>
+                        </form>
+                        <div>
+                            <ReactTable data={data} columns={columns}
+                                style={{ height: '360px' }}
+                                defaultPageSize={10}
+                                className="-striped -highlight"
+                            />
                         </div>
-                    </div>
-                    <div className='input_container half'>
-                        <div className="group">
-                            <input type="text" name="varitalhao" onChange={this.handleChange} required />
-                            <span className="highlight"></span>
-                            <span className="bar"></span>
-                            <label>Variedade</label>
-                        </div>
-                    </div>
-                    <div className='input_container half' style={{ marginRight: '1%', marginLeft: '0.5%' }}>
-                        <div className="group">
-                            <input type="number" name="areatalhao" onChange={this.handleChange} required />
-                            <span className="highlight"></span>
-                            <span className="bar"></span>
-                            <label>Área cultivada (M²)</label>
-                        </div>
-                    </div>
-                    <div className='input_container half'>
-                        <div className="group">
-                            <input id="idt" type="text" name="dttalhao" onChange={this.handleChange} required />
-                            <span className="highlight"></span>
-                            <span className="bar"></span>
-                            <label>Data do plantio</label>
-                        </div>
-                    </div>
-                    <div style={{margin: '1rem', textAlign: 'center'}}>
-                        <button className="btncad" onClick={this.onAddBtnClick}>Add</button>
-                    </div>
-                    <div>
-                        <ReactTable data={data} columns={columns}
-                            style={{ height: '300px' }}
-                            defaultPageSize={10}
-                            className="-striped -highlight"
-                        />
-                    </div>
-                </div>
+                </article>
             </div>
         );
     }
