@@ -3,6 +3,7 @@ import Toolbar from './components/Toolbar/Toolbar';
 import Signin from './components/Signin/Signin';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import CadFazendas from './components/Cadastros/Fazendas/CadFazendas';
+import Home from './components/Home/Home';
 import Backdrop from './components/Backdrop/Backdrop';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
@@ -89,7 +90,8 @@ class App extends Component {
             {backDrop}
             <main className="main_content">
               <Switch>
-                <Route exact path="/" component={CadFazendas} />
+                <Route exact path="/" component={Home} />
+                <Route path="/cad" component={CadFazendas} />
               </Switch>
             </main>
           </div>

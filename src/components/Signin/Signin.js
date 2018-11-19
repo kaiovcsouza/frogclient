@@ -10,12 +10,17 @@ class Signin extends React.Component {
         }
     }
 
-    onEmailChange = (event) => {
-        this.setState({ signInEmail: event.target.value })
-    }
-
-    onPasswordChange = (event) => {
-        this.setState({ signInPassword: event.target.value })
+    onFormChange = (event) => {
+        switch (event.target.name) {
+            case 'email-address':
+                this.setState({ signInEmail: event.target.value })
+                break;
+            case 'password':
+                this.setState({ signInPassword: event.target.value })
+                break;
+            default:
+                return;
+        }
     }
 
     saveAuthTokenInSessions = (token) => {
@@ -57,7 +62,7 @@ class Signin extends React.Component {
                                         type="email"
                                         name="email-address"
                                         id="email-address"
-                                        onChange={this.onEmailChange}
+                                        onChange={this.onFormChange}
                                     />
                                 </div>
                                 <div className="mv3">
@@ -67,7 +72,7 @@ class Signin extends React.Component {
                                         type="password"
                                         name="password"
                                         id="password"
-                                        onChange={this.onPasswordChange}
+                                        onChange={this.onFormChange}
                                     />
                                 </div>
                             </fieldset>

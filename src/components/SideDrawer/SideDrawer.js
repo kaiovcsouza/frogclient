@@ -13,12 +13,12 @@ class SideDrawer extends Component {
         return (
             <nav className={drawerClasses.join(' ')}>
                 <ul>
-                    <li><Link to="/">Home</Link></li>
-                        <li><Link to="/cad">Cadastro</Link></li>
-                        <li><Link to="/teste">Outro link</Link></li>
+                    <li onClick={this.props.close}><Link to="/">Home</Link></li>
+                    <li onClick={this.props.close}><Link to="/cad">Cadastro</Link></li>
+                    <li onClick={this.props.close}><Link to="/teste">Outro link</Link></li>
                 </ul>
             </nav>
-                );
-            }
-        }
+        );
+    }
+}
 export default SideDrawer;

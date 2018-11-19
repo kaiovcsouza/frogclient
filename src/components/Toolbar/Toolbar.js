@@ -3,7 +3,6 @@ import './Toolbar.css';
 import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
 
 const Toolbar = (props) => {
-    // const datelogon = new Date();
     return (
         <header className="toolbar">
             <nav className="tool_nav">
