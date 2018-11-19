@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import Toolbar from './components/Toolbar/Toolbar';
-import Signin from './components/Signin/Signin';
-import SideDrawer from './components/SideDrawer/SideDrawer';
-import CadFazendas from './components/Cadastros/Fazendas/CadFazendas';
-import Home from './components/Home/Home';
-import Backdrop from './components/Backdrop/Backdrop';
-import { Switch, Route } from 'react-router-dom';
-import './App.css';
+import React, { Component } from "react";
+import Toolbar from "./components/Toolbar/Toolbar";
+import Signin from "./components/Signin/Signin";
+import SideDrawer from "./components/SideDrawer/SideDrawer";
+import CadFazendas from "./components/Cadastros/Fazendas/CadFazendas";
+import Home from "./components/Home/Home";
+import Backdrop from "./components/Backdrop/Backdrop";
+import { Switch, Route } from "react-router-dom";
+import "./App.css";
 
 const initialState = {
-  route: 'home',
+  route: "home",
   isSignedIn: false,
   sideopen: false,
   user: {
-    id: '',
-    name: '',
-    email: ''
+    id: "",
+    name: "",
+    email: ""
   }
-}
+};
 
 class App extends Component {
   constructor() {
@@ -25,55 +25,55 @@ class App extends Component {
     this.state = initialState;
   }
 
-  loadUser = (data) => {
+  loadUser = data => {
     this.setState({
       user: {
         id: data.usercod,
         name: data.usernom,
         email: data.useremail
       }
-    })
-  }
+    });
+  };
 
-  onRouteChange = (route) => {
-    if (route === 'signout') {
-      return this.setState(initialState)
-    } else if (route === 'home') {
-      this.setState({ isSignedIn: true })
+  onRouteChange = route => {
+    if (route === "signout") {
+      return this.setState(initialState);
+    } else if (route === "home") {
+      this.setState({ isSignedIn: true });
     }
     this.setState({ route: route });
-  }
+  };
 
   componentDidMount() {
-    const token = window.sessionStorage.getItem('token');
+    const token = window.sessionStorage.getItem("token");
     if (token) {
-      fetch('http://localhost:3001/signin', {
-        method: 'POST',
+      fetch("http://localhost:3001/signin", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token
+          "Content-Type": "application/json",
+          Authorization: token
         }
       })
         .then(response => response.json())
         .then(user => {
           if (user) {
-            this.loadUser(user.id)
-            this.onRouteChange('home');
+            this.loadUser(user.id);
+            this.onRouteChange("home");
           }
         })
-        .catch(console.log)
+        .catch(console.log);
     }
   }
 
   handleDrawerClick = () => {
-    this.setState((prevState) => {
+    this.setState(prevState => {
       return { sideopen: !prevState.sideopen };
-    })
-  }
+    });
+  };
 
   handleBackdropClick = () => {
-    this.setState({ sideopen: false })
-  }
+    this.setState({ sideopen: false });
+  };
 
   render() {
     const { route } = this.state;
@@ -82,11 +82,14 @@ class App extends Component {
       backDrop = <Backdrop click={this.handleBackdropClick} />;
     }
     return (
-      <div style={{ height: '100%' }}>
-        {route === 'home'
-          ? <div>
+      <div style={{ height: "100%" }}>
+        {route === "home" ? (
+          <div>
             <Toolbar handleDrawerClick={this.handleDrawerClick} />
-            <SideDrawer show={this.state.sideopen} close={this.handleBackdropClick} />
+            <SideDrawer
+              show={this.state.sideopen}
+              close={this.handleBackdropClick}
+            />
             {backDrop}
             <main className="main_content">
               <Switch>
@@ -95,9 +98,9 @@ class App extends Component {
               </Switch>
             </main>
           </div>
-          :
+        ) : (
           <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-        }
+        )}
       </div>
     );
   }
