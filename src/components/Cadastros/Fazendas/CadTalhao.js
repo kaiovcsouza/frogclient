@@ -2,21 +2,24 @@ import React, { Component } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import "./CadTalhao.css";
-
+let id = 1;
 class CadTalhao extends Component {
   constructor() {
     super();
     this.state = {
       data: [],
+      fazid: "",
+      idtalhao: "",
       nomeTalhao: "",
       areaTalhao: "",
       variedadeTalhao: "",
       dtpTalhao: ""
     };
     this.onAddBtnClick = this.onAddBtnClick.bind(this);
+    this.onDeleteRow = this.onDeleteRow.bind(this);
   }
 
-  handleChange = event => {
+  onFormChange = event => {
     switch (event.target.name) {
       case "nometalhao":
         this.setState({ nomeTalhao: event.target.value });
@@ -39,18 +42,34 @@ class CadTalhao extends Component {
     event.preventDefault();
     let obj = [
       {
+        id: id,
         talhao: this.state.nomeTalhao,
         area: this.state.areaTalhao,
         variedade: this.state.variedadeTalhao,
         dtplantio: this.state.dtpTalhao
       }
     ];
-    this.setState({ data: [...this.state.data, ...obj] });
+    this.setState({ data: this.state.data.concat(obj) });
+    id += 1;
   }
+
+  onDeleteRow = id => {
+    if (window.confirm("Deseja deletar este talhão?")) {
+      const index = this.state.data.findIndex(row => {
+        return row.id === id;
+      });
+      this.state.data.splice(index, 1);
+      this.setState({ data: this.state.data });
+    }
+  };
 
   render() {
     const { data } = this.state;
     const columns = [
+      {
+        Header: "Id",
+        accessor: "id"
+      },
       {
         Header: "Talhão",
         accessor: "talhao"
@@ -66,6 +85,19 @@ class CadTalhao extends Component {
       {
         Header: "Data Plantio",
         accessor: "dtplantio"
+      },
+      {
+        Header: "",
+        accessor: "delete",
+        Cell: props => (
+          <div
+            className="modal-close"
+            onClick={() => this.onDeleteRow(props.original.id)}
+          >
+            &times;
+          </div>
+        ),
+        width: 50
       }
     ];
     return (
@@ -87,7 +119,7 @@ class CadTalhao extends Component {
                 <input
                   type="text"
                   name="nometalhao"
-                  onChange={this.handleChange}
+                  onChange={this.onFormChange}
                   required
                 />
                 <span className="highlight" />
@@ -100,7 +132,7 @@ class CadTalhao extends Component {
                 <input
                   type="text"
                   name="varitalhao"
-                  onChange={this.handleChange}
+                  onChange={this.onFormChange}
                   required
                 />
                 <span className="highlight" />
@@ -114,7 +146,7 @@ class CadTalhao extends Component {
                 <input
                   type="number"
                   name="areatalhao"
-                  onChange={this.handleChange}
+                  onChange={this.onFormChange}
                   required
                 />
                 <span className="highlight" />
@@ -128,7 +160,7 @@ class CadTalhao extends Component {
                   id="idt"
                   type="date"
                   name="dttalhao"
-                  onChange={this.handleChange}
+                  onChange={this.onFormChange}
                   required
                 />
                 <span className="highlight" />

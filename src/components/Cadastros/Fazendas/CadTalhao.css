@@ -1,51 +1,51 @@
 .talhaomodal {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}   
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .btnadd {
-    width: 200px;
-    color: white;
-    background: dodgerblue;
-    text-decoration: none;
-    border-radius: 15px;
-    border: none;
-    padding: 0.5rem;
+  width: 200px;
+  color: white;
+  background: dodgerblue;
+  text-decoration: none;
+  border-radius: 15px;
+  border: none;
+  padding: 0.5rem;
 }
 
 .btnadd:hover {
-    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btnadd:active {
-    transform: translateY(2px);
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  transform: translateY(2px);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .modal-close {
-    font-size: 3rem;
-    font-style: bold;
-    cursor: pointer;
-    display: inline-block;
+  font-size: 2rem;
+  font-style: bold;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .modal-close:hover {
-    color: red;
+  color: red;
 }
 
 .lbldata {
-    background: white;
+  background: white;
 }
 
 @media (max-width: 768px) {
-    .lbldata {
-        background: none;
-    }
+  .lbldata {
+    background: none;
+  }
 }
