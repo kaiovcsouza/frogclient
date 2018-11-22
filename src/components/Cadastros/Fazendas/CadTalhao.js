@@ -1,70 +1,45 @@
 import React, { Component } from "react";
 import ReactTable from "react-table";
+import { connect } from "react-redux";
+import { setFields, setDataTable, deleteDataTable } from "../../../actions";
 import "react-table/react-table.css";
 import "./CadTalhao.css";
 let id = 1;
+
+const mapStateToProps = state => {
+  return {
+    nomeTalhao: state.changeFields.nomeTalhao,
+    areaTalhao: state.changeFields.areaTalhao,
+    variedadeTalhao: state.changeFields.variedadeTalhao,
+    dtpTalhao: state.changeFields.dtpTalhao,
+    data: state.changeDataTable.data
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onFormChange: event =>
+      dispatch(setFields(event.target.name, event.target.value)),
+    onAddBtnClick: (id, talhao, area, variedade, dtplantio) =>
+      dispatch(setDataTable(id, talhao, area, variedade, dtplantio)),
+    onDeleteRow: id => {
+      if (window.confirm("Deseja deletar este talhão?"))
+        dispatch(deleteDataTable(id));
+    }
+  };
+};
+
 class CadTalhao extends Component {
-  constructor() {
-    super();
-    this.state = {
-      data: [],
-      fazid: "",
-      idtalhao: "",
-      nomeTalhao: "",
-      areaTalhao: "",
-      variedadeTalhao: "",
-      dtpTalhao: ""
-    };
-    this.onAddBtnClick = this.onAddBtnClick.bind(this);
-    this.onDeleteRow = this.onDeleteRow.bind(this);
-  }
-
-  onFormChange = event => {
-    switch (event.target.name) {
-      case "nometalhao":
-        this.setState({ nomeTalhao: event.target.value });
-        break;
-      case "areatalhao":
-        this.setState({ areaTalhao: event.target.value });
-        break;
-      case "varitalhao":
-        this.setState({ variedadeTalhao: event.target.value });
-        break;
-      case "dttalhao":
-        this.setState({ dtpTalhao: event.target.value });
-        break;
-      default:
-        return;
-    }
-  };
-
-  onAddBtnClick(event) {
-    event.preventDefault();
-    let obj = [
-      {
-        id: id,
-        talhao: this.state.nomeTalhao,
-        area: this.state.areaTalhao,
-        variedade: this.state.variedadeTalhao,
-        dtplantio: this.state.dtpTalhao
-      }
-    ];
-    this.setState({ data: this.state.data.concat(obj) });
-    id += 1;
-  }
-
-  onDeleteRow = id => {
-    if (window.confirm("Deseja deletar este talhão?")) {
-      const index = this.state.data.findIndex(row => {
-        return row.id === id;
-      });
-      this.state.data.splice(index, 1);
-      this.setState({ data: this.state.data });
-    }
-  };
-
   render() {
-    const { data } = this.state;
+    const {
+      onFormChange,
+      data,
+      onAddBtnClick,
+      nomeTalhao,
+      areaTalhao,
+      variedadeTalhao,
+      dtpTalhao,
+      onDeleteRow
+    } = this.props;
     const columns = [
       {
         Header: "Id",
@@ -92,7 +67,7 @@ class CadTalhao extends Component {
         Cell: props => (
           <div
             className="modal-close"
-            onClick={() => this.onDeleteRow(props.original.id)}
+            onClick={() => onDeleteRow(props.original.id)}
           >
             &times;
           </div>
@@ -113,13 +88,25 @@ class CadTalhao extends Component {
           <div className="modal-close" onClick={this.props.toggleModal}>
             &times;
           </div>
-          <form onSubmit={this.onAddBtnClick}>
+          <form
+            onSubmit={event => {
+              event.preventDefault();
+              onAddBtnClick(
+                id,
+                nomeTalhao,
+                areaTalhao,
+                variedadeTalhao,
+                dtpTalhao
+              );
+              id += 1;
+            }}
+          >
             <div className="input_container half" style={{ marginRight: "1%" }}>
               <div className="group">
                 <input
                   type="text"
                   name="nometalhao"
-                  onChange={this.onFormChange}
+                  onChange={onFormChange}
                   required
                 />
                 <span className="highlight" />
@@ -132,7 +119,7 @@ class CadTalhao extends Component {
                 <input
                   type="text"
                   name="varitalhao"
-                  onChange={this.onFormChange}
+                  onChange={onFormChange}
                   required
                 />
                 <span className="highlight" />
@@ -146,7 +133,7 @@ class CadTalhao extends Component {
                 <input
                   type="number"
                   name="areatalhao"
-                  onChange={this.onFormChange}
+                  onChange={onFormChange}
                   required
                 />
                 <span className="highlight" />
@@ -160,7 +147,7 @@ class CadTalhao extends Component {
                   id="idt"
                   type="date"
                   name="dttalhao"
-                  onChange={this.onFormChange}
+                  onChange={onFormChange}
                   required
                 />
                 <span className="highlight" />
@@ -186,4 +173,7 @@ class CadTalhao extends Component {
     );
   }
 }
-export default CadTalhao;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CadTalhao);
