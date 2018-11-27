@@ -1,24 +1,28 @@
 import React, { Component } from "react";
 import ReactTable from "react-table";
 import { connect } from "react-redux";
-import { setFields, setDataTable, deleteDataTable } from "../../../actions";
+import {
+  setFieldsTalhao,
+  setDataTable,
+  deleteDataTable
+} from "../../../actions";
 import "react-table/react-table.css";
 import "./CadTalhao.css";
 let id = 1;
 
 const mapStateToProps = state => {
   return {
-    nomeTalhao: state.changeFields.nomeTalhao,
-    areaTalhao: state.changeFields.areaTalhao,
-    variedadeTalhao: state.changeFields.variedadeTalhao,
-    dtpTalhao: state.changeFields.dtpTalhao,
+    nomeTalhao: state.changeFieldsTalhao.nomeTalhao,
+    areaTalhao: state.changeFieldsTalhao.areaTalhao,
+    variedadeTalhao: state.changeFieldsTalhao.variedadeTalhao,
+    dtpTalhao: state.changeFieldsTalhao.dtpTalhao,
     data: state.changeDataTable.data
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     onFormChange: event =>
-      dispatch(setFields(event.target.name, event.target.value)),
+      dispatch(setFieldsTalhao(event.target.name, event.target.value)),
     onAddBtnClick: (id, talhao, area, variedade, dtplantio) =>
       dispatch(setDataTable(id, talhao, area, variedade, dtplantio)),
     onDeleteRow: id => {

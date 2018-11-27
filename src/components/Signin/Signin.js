@@ -1,27 +1,26 @@
 import React from "react";
+import { connect } from "react-redux";
+import { setFieldsLogin } from "../../actions.js";
 import "./Signin.css";
+
+const mapStateToProps = state => {
+  return {
+    signInEmail: state.changeFieldsLogin.signInEmail,
+    signInPassword: state.changeFieldsLogin.signInPassword
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFormChange: event =>
+      dispatch(setFieldsLogin(event.target.name, event.target.value))
+  };
+};
 
 class Signin extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      signInEmail: "",
-      signInPassword: ""
-    };
   }
-
-  onFormChange = event => {
-    switch (event.target.name) {
-      case "email-address":
-        this.setState({ signInEmail: event.target.value });
-        break;
-      case "password":
-        this.setState({ signInPassword: event.target.value });
-        break;
-      default:
-        return;
-    }
-  };
 
   saveAuthTokenInSessions = token => {
     window.sessionStorage.setItem("token", token);
@@ -48,6 +47,7 @@ class Signin extends React.Component {
   };
 
   render() {
+    const { onFormChange } = this.props;
     return (
       <div className="modal">
         <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
@@ -64,7 +64,7 @@ class Signin extends React.Component {
                     type="email"
                     name="email-address"
                     id="email-address"
-                    onChange={this.onFormChange}
+                    onChange={onFormChange}
                   />
                 </div>
                 <div className="mv3">
@@ -76,7 +76,7 @@ class Signin extends React.Component {
                     type="password"
                     name="password"
                     id="password"
-                    onChange={this.onFormChange}
+                    onChange={onFormChange}
                   />
                 </div>
               </fieldset>
@@ -103,4 +103,7 @@ class Signin extends React.Component {
     );
   }
 }
-export default Signin;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Signin);

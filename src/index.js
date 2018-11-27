@@ -4,7 +4,11 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
-import { changeFields, changeDataTable } from "./reducers.js";
+import {
+  changeFieldsTalhao,
+  changeDataTable,
+  changeFieldsLogin
+} from "./reducers.js";
 import "./index.css";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
@@ -12,7 +16,11 @@ import { BrowserRouter } from "react-router-dom";
 import "tachyons";
 
 const logger = createLogger();
-const rootReducer = combineReducers({ changeFields, changeDataTable });
+const rootReducer = combineReducers({
+  changeFieldsTalhao,
+  changeDataTable,
+  changeFieldsLogin
+});
 const store = createStore(
   rootReducer,
   applyMiddleware(logger, thunkMiddleware)

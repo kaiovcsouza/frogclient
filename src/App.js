@@ -9,7 +9,7 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 
 const initialState = {
-  route: "home",
+  route: "singin",
   isSignedIn: false,
   sideopen: false,
   user: {
