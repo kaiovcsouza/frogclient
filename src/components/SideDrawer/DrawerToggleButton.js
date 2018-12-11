@@ -6,7 +6,6 @@ const DrawerToggleButton = props => {
   return (
     <button className="toggle_btn" onClick={props.click}>
       <div className="line" />
-
       <div className="line" />
       <div className="line" />
     </button>

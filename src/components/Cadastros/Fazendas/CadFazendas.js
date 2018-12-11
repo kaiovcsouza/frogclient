@@ -1,27 +1,35 @@
 import React, { Component } from "react";
 import Modal from "../../Modal/Modal";
 import CadTalhao from "./CadTalhao";
+import { connect } from "react-redux";
+import { setFieldsFazendas } from "../../../actions.js";
 import "./CadFazendas.css";
 
-const fieldValues = {
-  faznom: "",
-  fazcnpj: "",
-  fazinscestadual: "",
-  fazareatot: "",
-  fazend: "",
-  fazbai: "",
-  fazcomp: "",
-  fazcep: "",
-  fazcoord: "",
-  faztel: "",
-  fazprop: ""
+const mapStateToProps = state => {
+  return {
+    faznom: state.changeFieldsFazenda.faznom,
+    fazcnpj: state.changeFieldsFazenda.fazcnpj,
+    fazinscestadual: state.changeFieldsFazenda.fazinscestadual,
+    fazend: state.changeFieldsFazenda.fazend,
+    fazbai: state.changeFieldsFazenda.fazbai,
+    fazcomp: state.changeFieldsFazenda.fazcomp,
+    fazcep: state.changeFieldsFazenda.fazcep,
+    fazcoord: state.changeFieldsFazenda.fazcoord,
+    faztel: state.changeFieldsFazenda.faztel,
+    fazprop: state.changeFieldsFazenda.fazprop
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onFormChange: event =>
+      dispatch(setFieldsFazendas(event.target.name, event.target.value))
+  };
 };
 
 class CadFazendas extends Component {
   constructor() {
     super();
     this.state = {
-      fieldValues,
       isAreaOpen: false
     };
   }
@@ -33,44 +41,9 @@ class CadFazendas extends Component {
     }));
   };
 
-  onFormChange = event => {
-    switch (event.target.name) {
-      case "faznom":
-        this.setState({ faznom: event.target.value });
-        break;
-      case "fazcnpj":
-        this.setState({ fazcnpj: event.target.value });
-        break;
-      case "fazinscestadual":
-        this.setState({ fazinscestadual: event.target.value });
-        break;
-      case "fazend":
-        this.setState({ fazend: event.target.value });
-        break;
-      case "":
-        this.setState({ fazbai: event.target.value });
-        break;
-      case "fazcomp":
-        this.setState({ fazcomp: event.target.value });
-        break;
-      case "fazcep":
-        this.setState({ fazcep: event.target.value });
-        break;
-      case "fazcoord":
-        this.setState({ fazcoord: event.target.value });
-        break;
-      case "faztel":
-        this.setState({ faztel: event.target.value });
-        break;
-      case "fazprop":
-        this.setState({ fazprop: event.arget.value });
-        break;
-      default:
-        return;
-    }
-  };
   render() {
     const { isAreaOpen } = this.state;
+    const { onFormChange } = this.props;
     return (
       <div>
         {isAreaOpen && (
@@ -82,7 +55,12 @@ class CadFazendas extends Component {
           <legend className="formcadfaz__title">Fazendas</legend>
           <div className="input_container">
             <div className="group">
-              <input type="text" name="faznom" required />
+              <input
+                type="text"
+                name="faznom"
+                onChange={onFormChange}
+                required
+              />
               <span className="highlight" />
               <span className="bar" />
               <label>Fazenda</label>
@@ -90,7 +68,12 @@ class CadFazendas extends Component {
           </div>
           <div className="input_container half" style={{ marginRight: "2%" }}>
             <div className="group">
-              <input type="text" name="fazcnpj" required />
+              <input
+                type="text"
+                name="fazcnpj"
+                onChange={onFormChange}
+                required
+              />
               <span className="highlight" />
               <span className="bar" />
               <label>CNPJ</label>
@@ -98,7 +81,12 @@ class CadFazendas extends Component {
           </div>
           <div className="input_container half">
             <div className="group">
-              <input type="text" name="fazinscestadual" required />
+              <input
+                type="text"
+                name="fazinscestadual"
+                onChange={onFormChange}
+                required
+              />
               <span className="highlight" />
               <span className="bar" />
               <label>Inscrição Estadual</label>
@@ -106,13 +94,17 @@ class CadFazendas extends Component {
           </div>
           <div className="input_container areabtn">
             <button className="btnmodal" onClick={this.toggleModal}>
-              {" "}
               Definir área total (ha)
             </button>
           </div>
           <div className="input_container half" style={{ marginRight: "2%" }}>
             <div className="group">
-              <input type="text" name="fazend" required />
+              <input
+                type="text"
+                name="fazend"
+                onChange={onFormChange}
+                required
+              />
               <span className="highlight" />
               <span className="bar" />
               <label>Endereço</label>
@@ -120,7 +112,12 @@ class CadFazendas extends Component {
           </div>
           <div className="input_container half">
             <div className="group">
-              <input type="text" name="fazbai" required />
+              <input
+                type="text"
+                name="fazbai"
+                onChange={onFormChange}
+                required
+              />
               <span className="highlight" />
               <span className="bar" />
               <label>Bairro</label>
@@ -128,7 +125,12 @@ class CadFazendas extends Component {
           </div>
           <div className="input_container third" style={{ marginRight: "1%" }}>
             <div className="group">
-              <input type="text" name="fazcomp" required />
+              <input
+                type="text"
+                name="fazcomp"
+                onChange={onFormChange}
+                required
+              />
               <span className="highlight" />
               <span className="bar" />
               <label>Complemento</label>
@@ -136,7 +138,12 @@ class CadFazendas extends Component {
           </div>
           <div className="input_container third" style={{ marginRight: "1%" }}>
             <div className="group">
-              <input type="text" name="fazcep" required />
+              <input
+                type="text"
+                name="fazcep"
+                onChange={onFormChange}
+                required
+              />
               <span className="highlight" />
               <span className="bar" />
               <label>CEP / CX Postal</label>
@@ -144,7 +151,12 @@ class CadFazendas extends Component {
           </div>
           <div className="input_container third">
             <div className="group">
-              <input type="text" name="fazcoord" required />
+              <input
+                type="text"
+                name="fazcoord"
+                onChange={onFormChange}
+                required
+              />
               <span className="highlight" />
               <span className="bar" />
               <label>Coordenadas</label>
@@ -152,7 +164,12 @@ class CadFazendas extends Component {
           </div>
           <div className="input_container half" style={{ marginRight: "2%" }}>
             <div className="group">
-              <input type="text" name="faztel" required />
+              <input
+                type="text"
+                name="faztel"
+                onChange={onFormChange}
+                required
+              />
               <span className="highlight" />
               <span className="bar" />
               <label>Telefone</label>
@@ -160,7 +177,12 @@ class CadFazendas extends Component {
           </div>
           <div className="input_container half">
             <div className="group">
-              <input type="text" name="fazprop" required />
+              <input
+                type="text"
+                name="fazprop"
+                onChange={onFormChange}
+                required
+              />
               <span className="highlight" />
               <span className="bar" />
               <label>Proprietário</label>
@@ -176,4 +198,7 @@ class CadFazendas extends Component {
     );
   }
 }
-export default CadFazendas;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CadFazendas);

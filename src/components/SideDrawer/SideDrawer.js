@@ -9,7 +9,6 @@ class SideDrawer extends Component {
     if (this.props.show) {
       drawerClasses = ["sidedw", "open"];
     }
-
     return (
       <nav className={drawerClasses.join(" ")}>
         <ul>

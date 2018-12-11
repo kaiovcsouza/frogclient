@@ -18,10 +18,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Signin extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   saveAuthTokenInSessions = token => {
     window.sessionStorage.setItem("token", token);
   };

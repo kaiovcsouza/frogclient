@@ -7,7 +7,8 @@ import thunkMiddleware from "redux-thunk";
 import {
   changeFieldsTalhao,
   changeDataTable,
-  changeFieldsLogin
+  changeFieldsLogin,
+  changeFieldsFazenda
 } from "./reducers.js";
 import "./index.css";
 import App from "./App";
@@ -19,7 +20,8 @@ const logger = createLogger();
 const rootReducer = combineReducers({
   changeFieldsTalhao,
   changeDataTable,
-  changeFieldsLogin
+  changeFieldsLogin,
+  changeFieldsFazenda
 });
 const store = createStore(
   rootReducer,
